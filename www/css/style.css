@@ -1,1 +1,26 @@
-/* Empty. Add your own CSS if you like */
+/* Login */
+.login-content {
+  height: 100%;
+  position: relative;
+}
+
+.login-content .title {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+}
+
+.facebook-sign-in {
+  width: 100%;
+  position: absolute;
+  bottom: 35px;
+  background: #4267B2;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.facebook-sign-in:hover, .facebook-sign-in.activated {
+  background-color: #365899;
+  color: #FFF;
+}
