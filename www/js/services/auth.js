@@ -12,7 +12,7 @@ angular.module('starter.services')
   };
 
   auth.loggedIn = function () {
-    return auth.getFacebookUser().userID;
+    return auth.getFacebookUser().facebookId;
   };
 
   auth.saveFacebookUser = function (user) {

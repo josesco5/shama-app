@@ -10,12 +10,12 @@ angular.module('starter.controllers')
 
       getFacebookProfileInfo(authResponse)
         .then(function (profileInfo) {
+          profileInfo.picture = 'http://graph.facebook.com/' + authResponse.userID + '/picture?type=large';
+
           Auth.saveFacebookUser({
             authResponse: authResponse,
-            userID: profileInfo.id,
-            name: profileInfo.name,
-            email: profileInfo.email,
-            picture: 'http://graph.facebook.com/' + authResponse.userID + '/picture?type=large'
+            facebookId: profileInfo.id,
+            profile: profileInfo
           });
           $state.go('tab.dash');
         }, function (fail) {
@@ -30,7 +30,7 @@ angular.module('starter.controllers')
     var getFacebookProfileInfo = function (authResponse) {
       var info = $q.defer();
 
-      facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
+      facebookConnectPlugin.api('/me?fields=email,first_name,last_name,gender&access_token=' + authResponse.accessToken, null,
         function (response) {
           info.resolve(response);
         },
@@ -48,15 +48,15 @@ angular.module('starter.controllers')
 
           var facebookUser = Auth.getFacebookUser();
 
-          if (!facebookUser.userID) {
+          if (!facebookUser.facebookId) {
             getFacebookProfileInfo(sucess.authResponse)
               .then(function (profileInfo) {
+                profileInfo.picture = 'http://graph.facebook.com/' + authResponse.userID + '/picture?type=large';
+
                 Auth.saveFacebookUser({
                   authResponse: authResponse,
-                  userID: profileInfo.id,
-                  name: profileInfo.name,
-                  email: profileInfo.email,
-                  picture: 'http://graph.facebook.com/' + authResponse.userID + '/picture?type=large'
+                  facebookId: profileInfo.id,
+                  profile: profileInfo
                 });
 
                 $state.go('tab.dash');
