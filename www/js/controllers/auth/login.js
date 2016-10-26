@@ -52,7 +52,7 @@ angular.module('starter.controllers')
       };
       Auth.signUp(user)
         .then(function(response) {
-          Auth.saveToken(response.data.token);
+          Auth.saveToken('JWT ' + response.data.token);
 
           var currentUser = response.data.user;
           currentUser.id = currentUser._id;
