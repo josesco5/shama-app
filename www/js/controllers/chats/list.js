@@ -12,7 +12,15 @@ angular.module('starter.controllers')
       $state.go('login');
     }
 
-    $scope.chats = Chats.all();
+    $scope.chats = [];
+
+    Chats.all()
+      .then(function (response) {
+        $scope.chats = response.data;
+      }, function (response) {
+        // ToDo: Display error message
+        console.log('Error getting the chats list, with status: ' + response.status);
+      });
     $scope.remove = function(chat) {
       Chats.remove(chat);
     };
