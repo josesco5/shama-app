@@ -16,8 +16,8 @@
   </ion-content>
   <div class="bar bar-footer message-box">
     <div class="message-input">
-      <textarea placeholder="Write a message"></textarea>
+      <textarea placeholder="Write a message" ng-model="message.body"></textarea>
     </div>
-    <button class="button button-icon ion-android-send"></button>
+    <button class="button button-icon ion-android-send" ng-click="sendMessage()"></button>
   </div>
 </ion-view>
