@@ -5,7 +5,7 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{chat.title}}">
-  <ion-content class="padding messages-container">
+  <ion-content class="padding messages-container" delegate-handle="messages">
     <!-- Load chat messages -->
     <div class="messages-list">
       <div class="message" ng-repeat="message in messages"
