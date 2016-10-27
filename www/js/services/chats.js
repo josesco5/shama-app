@@ -27,6 +27,14 @@ angular.module('starter.services')
         }
       }
       return null;
+    },
+    getMessages: function (chatId) {
+      var request = {
+        method: 'GET',
+        url: config.backendUrl +'/chats/' + chatId + '/messages',
+        headers: { authorization: Auth.getToken() }
+      };
+      return $http(request);
     }
   };
 });

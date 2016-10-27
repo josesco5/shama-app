@@ -5,4 +5,10 @@ angular.module('starter.controllers')
     }
 
     $scope.chat = Chats.get($stateParams.chatId);
+    $scope.messages = [];
+
+    Chats.getMessages($stateParams.chatId)
+      .then(function(response) {
+        $scope.messages = response.data;
+      });
   });
