@@ -60,7 +60,7 @@
 }
 
 .message.mine:after {
-  left: unset;
+  left: auto;
   right: 20px;
 }
 

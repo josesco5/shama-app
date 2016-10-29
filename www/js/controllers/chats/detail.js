@@ -18,6 +18,10 @@ angular.module('starter.controllers')
       $scope.message.body = '';
     };
 
+    $scope.isMyMessage = function (message) {
+      return message.userId === Auth.getCurrentUser().id;
+    };
+
     Websocket.joinChat($stateParams.chatId);
 
     Websocket.onMessage(function (message) {

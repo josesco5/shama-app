@@ -8,7 +8,8 @@
   <ion-content class="padding messages-container" delegate-handle="messages">
     <!-- Load chat messages -->
     <div class="messages-list">
-      <div class="message" ng-repeat="message in messages"
+      <div class="message" ng-class="{'mine': isMyMessage(message)}"
+           ng-repeat="message in messages"
            type="item-text-wrap">
         <p>{{message.body}}</p>
       </div>
